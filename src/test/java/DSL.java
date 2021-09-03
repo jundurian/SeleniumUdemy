@@ -72,7 +72,7 @@ public class DSL {
 		WebElement element = driver.findElement(By.id("elementosForm:esportes"));
 		Select combo = new Select(element);
 		List<WebElement> allSelectedOptions = combo.getAllSelectedOptions();
-		List<String> valores = new ArrayList<String>();
+		List<String> valores = new ArrayList<>();
 		for(WebElement opcao: allSelectedOptions) {
 			valores.add(opcao.getText());
 		}
