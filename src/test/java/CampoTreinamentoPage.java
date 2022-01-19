@@ -54,31 +54,31 @@ public class CampoTreinamentoPage {
     }
 
     public String obterResultadoCadastro(){
-        return dsl.obterTexto(By.id("resultado"));
+        return dsl.obterTexto(By.xpath("//*[@id='resultado']/span"));
     }
 
     public String obterNomeCadastro(){
-        return dsl.obterTexto(By.id("descNome"));
+        return dsl.obterTexto(By.xpath("//*[@id='descNome']/span"));
     }
 
     public String obterSobrenomeCadastro(){
-        return dsl.obterTexto(By.id("descSobrenome"));
+        return dsl.obterTexto(By.xpath("//*[@id='descSobrenome']/span"));
     }
 
     public String obterSexoCadastro(){
-        return dsl.obterTexto("descSexo");
+        return dsl.obterTexto(By.xpath("//*[@id='descSexo']/span"));
     }
 
     public String obterComidaCadastro(){
-        return dsl.obterTexto("descComida");
+        return dsl.obterTexto(By.xpath("//*[@id='descComida']/span"));
     }
 
     public String obterEscolaridadeCadastro(){
-        return dsl.obterTexto("descEscolaridade");
+        return dsl.obterTexto(By.xpath("//*[@id='descEscolaridade']/span"));
     }
 
     public String obterEsportesCadastro(){
-        return dsl.obterTexto("descEsportes");
+        return dsl.obterTexto(By.xpath("//*[@id='descEsportes']/span"));
     }
 
 }

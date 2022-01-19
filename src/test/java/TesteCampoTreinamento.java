@@ -140,4 +140,10 @@ public class TesteCampoTreinamento {
 
     }
 
+    @Test
+    public void deveClicarBotaoTabela(){
+        dsl.clicarBotãoTabela("Nome","Maria","Botao");
+
+    }
+
 }
