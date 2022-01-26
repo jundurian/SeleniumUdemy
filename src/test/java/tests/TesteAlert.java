@@ -1,30 +1,31 @@
-import io.github.bonigarcia.wdm.WebDriverManager;
+package tests;
+
+import core.DSL;
+import core.DriverFactory;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
 
+import static core.DriverFactory.getDriver;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class TesteAlert {
 
-    private WebDriver driver;
     private DSL dsl;
 
     @BeforeEach
     public void inicializar(){
 
-        WebDriverManager.firefoxdriver().setup();
-        driver = new FirefoxDriver();
-        driver.get("file:///" + System.getProperty("user.dir") + "/src/test/resources/componentes.html");
-        driver.manage().window().maximize();
-        dsl = new DSL(driver);
+        getDriver().get("file:///" + System.getProperty("user.dir") + "/src/test/resources/componentes.html");
+        getDriver().manage().window().maximize();
+        dsl = new DSL();
     }
 
     @AfterEach
     public void fecharBrowser(){
-        driver.quit();
+
+        DriverFactory.getDriver();
     }
 
     @Test

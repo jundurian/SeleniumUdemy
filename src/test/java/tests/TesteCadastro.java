@@ -1,33 +1,28 @@
-import io.github.bonigarcia.wdm.WebDriverManager;
-import org.junit.jupiter.api.AfterEach;
+package tests;
+
+import core.BaseTest;
+import core.DSL;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
+import page.CampoTreinamentoPage;
 
+import static core.DriverFactory.getDriver;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class TesteCadastro {
+public class TesteCadastro extends BaseTest {
 
-    private WebDriver driver;
     private DSL dsl;
     private CampoTreinamentoPage page;
 
     @BeforeEach
     public void inicializar(){
 
-        WebDriverManager.firefoxdriver().setup();
-        driver = new FirefoxDriver();
-        driver.get("file:///" + System.getProperty("user.dir") + "/src/test/resources/componentes.html");
-        driver.manage().window().maximize();
-        dsl = new DSL(driver);
-        page = new CampoTreinamentoPage(driver);
+        getDriver().get("file:///" + System.getProperty("user.dir") + "/src/test/resources/componentes.html");
+        dsl = new DSL();
+        page = new CampoTreinamentoPage();
     }
-//
-//    @AfterEach
-//    public void fecharBrowser(){
-//        driver.quit();
-//    }
+
 
     @Test
     public void deveRealizarCadastroComSucesso(){
@@ -40,13 +35,13 @@ public class TesteCadastro {
         page.setEsporte("Natacao");
         page.cadastrar();
 
-        assertEquals("Cadastrado!",page.obterResultadoCadastro());
-        assertEquals("Wagner",page.obterNomeCadastro());
-        assertEquals("Costa", page.obterSobrenomeCadastro());
-        assertEquals("Masculino", page.obterSexoCadastro());
-        assertEquals("Pizza", page.obterComidaCadastro());
-        assertEquals("mestrado", page.obterEscolaridadeCadastro());
-        assertEquals("Natacao", page.obterEsportesCadastro());
+        Assertions.assertEquals("Cadastrado!",page.obterResultadoCadastro());
+        Assertions.assertEquals("Wagner",page.obterNomeCadastro());
+        Assertions.assertEquals("Costa", page.obterSobrenomeCadastro());
+        Assertions.assertEquals("Masculino", page.obterSexoCadastro());
+        Assertions.assertEquals("Pizza", page.obterComidaCadastro());
+        Assertions.assertEquals("mestrado", page.obterEscolaridadeCadastro());
+        Assertions.assertEquals("Natacao", page.obterEsportesCadastro());
     }
 
     @Test

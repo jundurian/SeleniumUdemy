@@ -1,15 +1,21 @@
+package tests;
+
+import core.BaseTest;
+import core.DSL;
+import core.DriverFactory;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import page.CampoTreinamentoPage;
 
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 
+import static core.DriverFactory.getDriver;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 // CLASSE PARA TESTES PARAMETRICOS
@@ -17,7 +23,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 // DESCONSIDERAR
 
 
-public class TesteRegrasCadastro {
+public class TesteRegrasCadastro extends BaseTest {
 
     private WebDriver driver;
     private DSL dsl;
@@ -32,16 +38,9 @@ public class TesteRegrasCadastro {
 
     @BeforeAll
     public void inicializa(){
-        driver = new FirefoxDriver();
-        driver.manage().window().setSize(new Dimension(1200, 765));
-        driver.get("file:///" + System.getProperty("user.dir") + "/src/main/resources/componentes.html");
-        dsl = new DSL(driver);
-        page = new CampoTreinamentoPage(driver);
-    }
-
-    @AfterAll
-    public void finaliza(){
-        driver.quit();
+        getDriver().get("file:///" + System.getProperty("user.dir") + "/src/main/resources/componentes.html");
+        dsl = new DSL();
+        page = new CampoTreinamentoPage();
     }
 
 

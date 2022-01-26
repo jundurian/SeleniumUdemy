@@ -1,38 +1,37 @@
-import io.github.bonigarcia.wdm.WebDriverManager;
+package tests;
+
+import core.DSL;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.firefox.FirefoxDriver;
 
 import java.util.Arrays;
 import java.util.List;
 
+import static core.DriverFactory.getDriver;
+import static core.DriverFactory.killDriver;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class TesteCampoTreinamento {
 
-    private WebDriver driver;
     private DSL dsl;
 
     @BeforeEach
     public void inicializar(){
 
-        WebDriverManager.firefoxdriver().setup();
-        driver = new FirefoxDriver();
-        driver.get("file:///" + System.getProperty("user.dir") + "/src/test/resources/componentes.html");
-        driver.manage().window().maximize();
-        dsl = new DSL(driver);
+        getDriver().get("file:///" + System.getProperty("user.dir") + "/src/test/resources/componentes.html");
+        getDriver().manage().window().maximize();
+        dsl = new DSL();
     }
 
-//    @AfterEach
-//    public void fecharBrowser(){
-//        driver.quit();
-//    }
+    @AfterEach
+    public void fecharBrowser(){
+        killDriver();
+    }
 
     @Test
     public void testTextField(){
@@ -130,12 +129,12 @@ public class TesteCampoTreinamento {
 
     @Test
     public void testJavascript(){
-        JavascriptExecutor js = (JavascriptExecutor) driver;
+        JavascriptExecutor js = (JavascriptExecutor) getDriver();
 //        js.executeScript("alert('Testando')");
         js.executeScript("document.getElementById('elementosForm:nome').value = 'Escrito via JS'");
         js.executeScript("document.getElementById('elementosForm:sobrenome').type = 'radio'");
 
-        WebElement element = driver.findElement(By.id("elementosForm:nome"));
+        WebElement element = getDriver().findElement(By.id("elementosForm:nome"));
         js.executeScript("arguments[0].style.border = arguments[1]",element, "solid 4px red");
 
     }
