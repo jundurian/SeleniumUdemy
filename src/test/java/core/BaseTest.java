@@ -7,6 +7,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.TestInfo;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
+import page.LoginPage;
 
 import java.io.File;
 import java.io.IOException;
@@ -16,6 +17,7 @@ import static core.DriverFactory.killDriver;
 import static java.io.File.separator;
 
 public class BaseTest {
+    private LoginPage page = new LoginPage();
 
     @AfterEach
     public void fecharBrowserAposCadaTeste(TestInfo testInfo) throws IOException {
@@ -30,14 +32,20 @@ public class BaseTest {
         }
     }
 
-    @AfterAll
-    public static void fecharBrowserDepoisTodosTestes(){
-        killDriver();
-    }
+//    @AfterAll
+//    public static void fecharBrowserDepoisTodosTestes(){
+//        killDriver();
+//    }
 
     @BeforeEach
-    public void maximizeBrowser(){
+    public void maximizeAndLogin(){
         getDriver().manage().window().maximize();
+
+        page.acessarTelaInicial();
+        page.setEmail("gabriel@junduriann");
+        page.setSenha("123456");
+        page.entrar();
+
 
     }
 }
