@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 import page.ContasPage;
 import page.MenuPage;
 
+import static core.Propriedades.NOME_CONTA_ALTERADA;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class ContaTest extends BaseTest {
@@ -27,7 +28,7 @@ public class ContaTest extends BaseTest {
         menuPage.acessarTelaListarConta();
 
         contasPage.clicarAlterarConta("Conta do Teste");
-        contasPage.setNome("Conta do Teste alterada");
+        contasPage.setNome(NOME_CONTA_ALTERADA);
         contasPage.salvar();
 
         assertEquals("Conta alterada com sucesso!", contasPage.opterMensagemSucesso());
@@ -38,9 +39,10 @@ public class ContaTest extends BaseTest {
     public void testInserirContaMesmoNome(){
 
         menuPage.acessarTelaInserirConta();
-        contasPage.setNome("Conta do Teste alterada");
+        contasPage.setNome(NOME_CONTA_ALTERADA);
         contasPage.salvar();
 
         assertEquals("Já existe uma conta com esse nome!", contasPage.opterMensagemErro());
     }
+
 }

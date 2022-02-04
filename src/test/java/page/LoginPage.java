@@ -1,7 +1,6 @@
 package page;
 
 import core.BasePage;
-import org.openqa.selenium.By;
 
 import static core.DriverFactory.getDriver;
 

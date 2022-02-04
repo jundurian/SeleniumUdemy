@@ -1,8 +1,10 @@
 package tests;
 
 import core.BaseTest;
-import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.MethodOrderer;
+import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestMethodOrder;
 import page.MenuPage;
 import page.MovimentacaoPage;
 import utils.DataUtils;
@@ -11,6 +13,7 @@ import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
+import static core.Propriedades.NOME_CONTA_ALTERADA;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static utils.DataUtils.obterDataFormatada;
@@ -25,12 +28,12 @@ public class MovimentacaoTest extends BaseTest {
 
         menuPage.acessarTelaInserirMovimentaca();
 
-        movPage.setDataMovimentacao("01/09/2017");
-        movPage.setDataPagamento("02/09/2017");
+        movPage.setDataMovimentacao(obterDataFormatada(new Date()));
+        movPage.setDataPagamento(obterDataFormatada(new Date()));
         movPage.setDescricao("Movimentação do Teste");
         movPage.setInteressado("Qualquer");
         movPage.setValor("500");
-        movPage.setConta("Conta do Teste alterada");
+        movPage.setConta(NOME_CONTA_ALTERADA);
         movPage.setStatusPago();
         movPage.salvar();
 
@@ -63,13 +66,12 @@ public class MovimentacaoTest extends BaseTest {
 
         Date dataFutura = DataUtils.obterDataComDiferencaDias(5);
 
-
         movPage.setDataMovimentacao(obterDataFormatada(dataFutura));
         movPage.setDataPagamento(obterDataFormatada(dataFutura));
         movPage.setDescricao("Movimentação do Teste");
         movPage.setInteressado("Qualquer");
         movPage.setValor("500");
-        movPage.setConta("Conta do Teste alterada");
+        movPage.setConta(NOME_CONTA_ALTERADA);
         movPage.setStatusPago();
         movPage.salvar();
 

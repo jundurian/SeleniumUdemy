@@ -1,10 +1,7 @@
 package core;
 
 import org.apache.commons.io.FileUtils;
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.TestInfo;
+import org.junit.jupiter.api.*;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import page.LoginPage;
@@ -14,10 +11,12 @@ import java.io.IOException;
 
 import static core.DriverFactory.getDriver;
 import static core.DriverFactory.killDriver;
+import static core.Propriedades.FECHAR_BROWSER_DPS_CADA_TESTE;
 import static java.io.File.separator;
 
 public class BaseTest {
-    private LoginPage page = new LoginPage();
+
+    private static LoginPage page = new LoginPage();
 
     @AfterEach
     public void fecharBrowserAposCadaTeste(TestInfo testInfo) throws IOException {
@@ -27,7 +26,7 @@ public class BaseTest {
         FileUtils.copyFile(arquivo,new File("target" + separator + "screenshots" + separator +
                 testInfo.getDisplayName() + ".jpg"));
 
-        if (Propriedades.FECHAR_BROWSER) {
+        if (FECHAR_BROWSER_DPS_CADA_TESTE) {
             killDriver();
         }
     }
@@ -37,8 +36,8 @@ public class BaseTest {
 //        killDriver();
 //    }
 
-    @BeforeEach
-    public void maximizeAndLogin(){
+    @BeforeAll
+    public static void maximizeAndLogin(){
         getDriver().manage().window().maximize();
 
         page.acessarTelaInicial();

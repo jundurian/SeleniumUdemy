@@ -2,9 +2,11 @@ package core;
 
 public class Propriedades {
 
-    public static boolean FECHAR_BROWSER = false;
+    public static boolean FECHAR_BROWSER_DPS_CADA_TESTE = false;
 
-    public static Browsers browsers = Browsers.FIREFOX;
+    public static Browsers browsers = Browsers.CHROME;
+
+    public static String NOME_CONTA_ALTERADA = "Conta Alterada" + System.nanoTime();
 
     public enum Browsers{
         CHROME,
