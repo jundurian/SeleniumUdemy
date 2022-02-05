@@ -17,11 +17,11 @@ public class DriverFactory {
 
             switch (Propriedades.browsers){
                 case FIREFOX:
-//                    WebDriverManager.firefoxdriver().setup();
+                    WebDriverManager.firefoxdriver().setup();
                     driver = new FirefoxDriver();
                     break;
                 case CHROME:
-//                    WebDriverManager.chromedriver().setup();
+                    WebDriverManager.chromedriver().setup();
                     driver = new ChromeDriver();
                     break;
             }

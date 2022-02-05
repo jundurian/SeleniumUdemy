@@ -18,12 +18,14 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static utils.DataUtils.obterDataFormatada;
 
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class MovimentacaoTest extends BaseTest {
 
     private MenuPage menuPage = new MenuPage();
     private MovimentacaoPage movPage = new MovimentacaoPage();
 
     @Test
+    @Order(1)
     public void testInserirMovimentacao(){
 
         menuPage.acessarTelaInserirMovimentaca();
@@ -42,6 +44,7 @@ public class MovimentacaoTest extends BaseTest {
     }
 
     @Test
+    @Order(2)
     public void testCamposObrigatorios(){
         menuPage.acessarTelaInserirMovimentaca();
         movPage.salvar();
@@ -60,6 +63,7 @@ public class MovimentacaoTest extends BaseTest {
     }
 
     @Test
+    @Order(3)
     public void testInserirMovimentacaoFutura(){
 
         menuPage.acessarTelaInserirMovimentaca();

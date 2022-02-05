@@ -31,10 +31,10 @@ public class BaseTest {
         }
     }
 
-//    @AfterAll
-//    public static void fecharBrowserDepoisTodosTestes(){
-//        killDriver();
-//    }
+    @AfterAll
+    public static void fecharBrowserDepoisTodosTestes(){
+        killDriver();
+    }
 
     @BeforeAll
     public static void maximizeAndLogin(){

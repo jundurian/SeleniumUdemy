@@ -11,12 +11,14 @@ import page.ResumoPage;
 import static core.DriverFactory.getDriver;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class ResumoTest extends BaseTest {
 
     private MenuPage menuPage = new MenuPage();
     private ResumoPage resumoPage = new ResumoPage();
 
     @Test
+    @Order(1)
     public void testExcluirMovimentacao(){
 
         menuPage.acessarTelaResumo();
@@ -27,6 +29,7 @@ public class ResumoTest extends BaseTest {
     }
 
     @Test
+    @Order(2)
     public void testResumoMensal(){
         menuPage.acessarTelaResumo();
 
