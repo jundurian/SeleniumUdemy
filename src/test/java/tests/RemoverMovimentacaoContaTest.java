@@ -5,7 +5,6 @@ import org.junit.jupiter.api.Test;
 import page.ContasPage;
 import page.MenuPage;
 
-import static core.Propriedades.NOME_CONTA_ALTERADA;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class RemoverMovimentacaoContaTest extends BaseTest {
@@ -17,7 +16,7 @@ public class RemoverMovimentacaoContaTest extends BaseTest {
     public void testExcluirContaComMovimentacao(){
         menuPage.acessarTelaListarConta();
 
-        contasPage.clicarExcluirConta(NOME_CONTA_ALTERADA);
+        contasPage.clicarExcluirConta("Conta com movimentacao");
 
         assertEquals("Conta em uso na movimentações",contasPage.opterMensagemErro());
 

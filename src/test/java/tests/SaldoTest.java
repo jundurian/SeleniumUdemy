@@ -5,7 +5,6 @@ import org.junit.jupiter.api.Test;
 import page.HomePage;
 import page.MenuPage;
 
-import static core.Propriedades.NOME_CONTA_ALTERADA;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class SaldoTest extends BaseTest {
@@ -16,7 +15,7 @@ public class SaldoTest extends BaseTest {
     @Test
     public void testSaldoConta(){
         menuPage.acessarTelaHome();
-        assertEquals("500.00",homePage.obterSaldoConta(NOME_CONTA_ALTERADA));
+        assertEquals("534.00",homePage.obterSaldoConta("Conta para saldo"));
     }
 
 }

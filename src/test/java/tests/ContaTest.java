@@ -8,17 +8,14 @@ import org.junit.jupiter.api.TestMethodOrder;
 import page.ContasPage;
 import page.MenuPage;
 
-import static core.Propriedades.NOME_CONTA_ALTERADA;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class ContaTest extends BaseTest {
 
     MenuPage menuPage = new MenuPage();
     ContasPage contasPage = new ContasPage();
 
     @Test
-    @Order(1)
     public void testInserirConta(){
         menuPage.acessarTelaInserirConta();
         contasPage.setNome("Conta do Teste");
@@ -29,12 +26,11 @@ public class ContaTest extends BaseTest {
     }
 
     @Test
-    @Order(2)
     public void testAlterarConta(){
         menuPage.acessarTelaListarConta();
 
-        contasPage.clicarAlterarConta("Conta do Teste");
-        contasPage.setNome(NOME_CONTA_ALTERADA);
+        contasPage.clicarAlterarConta("Conta para alterar");
+        contasPage.setNome("Conta alterada");
         contasPage.salvar();
 
         assertEquals("Conta alterada com sucesso!", contasPage.opterMensagemSucesso());
@@ -42,11 +38,10 @@ public class ContaTest extends BaseTest {
     }
 
     @Test
-    @Order(3)
     public void testInserirContaMesmoNome(){
 
         menuPage.acessarTelaInserirConta();
-        contasPage.setNome(NOME_CONTA_ALTERADA);
+        contasPage.setNome("Conta mesmo nome");
         contasPage.salvar();
 
         assertEquals("Já existe uma conta com esse nome!", contasPage.opterMensagemErro());

@@ -16,7 +16,7 @@ import static java.io.File.separator;
 
 public class BaseTest {
 
-    private static LoginPage page = new LoginPage();
+    private LoginPage page = new LoginPage();
 
     @AfterEach
     public void fecharBrowserAposCadaTeste(TestInfo testInfo) throws IOException {
@@ -31,14 +31,9 @@ public class BaseTest {
         }
     }
 
-    @AfterAll
-    public static void fecharBrowserDepoisTodosTestes(){
-        killDriver();
-    }
-
-    @BeforeAll
-    public static void maximizeAndLogin(){
-        getDriver().manage().window().maximize();
+    @BeforeEach
+    public void maximizeAndLogin(){
+//        getDriver().manage().window().maximize();
 
         page.acessarTelaInicial();
         page.setEmail("gabriel@junduriann");

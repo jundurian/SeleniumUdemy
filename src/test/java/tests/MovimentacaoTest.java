@@ -13,19 +13,16 @@ import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
-import static core.Propriedades.NOME_CONTA_ALTERADA;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static utils.DataUtils.obterDataFormatada;
 
-@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class MovimentacaoTest extends BaseTest {
 
     private MenuPage menuPage = new MenuPage();
     private MovimentacaoPage movPage = new MovimentacaoPage();
 
     @Test
-    @Order(1)
     public void testInserirMovimentacao(){
 
         menuPage.acessarTelaInserirMovimentaca();
@@ -35,7 +32,7 @@ public class MovimentacaoTest extends BaseTest {
         movPage.setDescricao("Movimentação do Teste");
         movPage.setInteressado("Qualquer");
         movPage.setValor("500");
-        movPage.setConta(NOME_CONTA_ALTERADA);
+        movPage.setConta("Conta para movimentacoes");
         movPage.setStatusPago();
         movPage.salvar();
 
@@ -44,7 +41,6 @@ public class MovimentacaoTest extends BaseTest {
     }
 
     @Test
-    @Order(2)
     public void testCamposObrigatorios(){
         menuPage.acessarTelaInserirMovimentaca();
         movPage.salvar();
@@ -63,7 +59,6 @@ public class MovimentacaoTest extends BaseTest {
     }
 
     @Test
-    @Order(3)
     public void testInserirMovimentacaoFutura(){
 
         menuPage.acessarTelaInserirMovimentaca();
@@ -75,7 +70,7 @@ public class MovimentacaoTest extends BaseTest {
         movPage.setDescricao("Movimentação do Teste");
         movPage.setInteressado("Qualquer");
         movPage.setValor("500");
-        movPage.setConta(NOME_CONTA_ALTERADA);
+        movPage.setConta("Conta para movimentacoes");
         movPage.setStatusPago();
         movPage.salvar();
 
