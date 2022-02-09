@@ -1,6 +1,5 @@
 package core;
 
-import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -25,14 +24,16 @@ public class DriverFactory {
         WebDriver driver = null;
             switch (Propriedades.browsers){
                 case FIREFOX:
-                    WebDriverManager.firefoxdriver().setup();
+//                    WebDriverManager.firefoxdriver().setup();
                     driver = new FirefoxDriver();
                     break;
                 case CHROME:
-                    WebDriverManager.chromedriver().setup();
+//                    WebDriverManager.chromedriver().setup();
                     driver = new ChromeDriver();
                     break;
             }
+
+
         return driver;
     }
 

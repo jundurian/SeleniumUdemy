@@ -22,5 +22,9 @@ public class LoginPage extends BasePage {
         clicarBotaoPorTexto("Entrar");
     }
 
+    public void resetar(){
+        clicarLink("reset");
+    }
+
 
 }
